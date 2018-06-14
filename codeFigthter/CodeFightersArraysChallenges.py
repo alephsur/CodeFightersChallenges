@@ -7,6 +7,9 @@ def opt_first_duplicate(arr):
             unique_nb.add(nb)
     return -1
 
+#a = [2, 1, 3, 5, 3, 2]
+
+#print(opt_first_duplicate(a))
 
 def firstNotRepeatingCharacter(s):
     unique_char = list()
@@ -24,7 +27,9 @@ def firstNotRepeatingCharacter(s):
     else:
         return '_'
 
+#s = "abacabad"
 
+#print(firstNotRepeatingCharacter(s))
 
 def rotateImage(a):
     matrix = []
@@ -35,6 +40,13 @@ def rotateImage(a):
         vector.reverse()
         matrix.append(vector)
     return matrix
+
+#a = [[1, 2, 3],
+#     [4, 5, 6],
+#     [7, 8, 9]]
+
+#print(rotateImage(a))
+
 
 
 def sudoku2(grid):
@@ -63,30 +75,71 @@ def sudoku2(grid):
 
 
 
-grid = [ [".",".",".",".",".",".","5",".","."],
-         [".",".",".",".",".",".",".",".","."],
-         [".",".",".",".",".",".",".",".","."],
-         ["9","3",".",".","2",".","4",".","."],
-         [".",".","7",".",".",".","3",".","."],
-         [".",".",".",".",".",".",".",".","."],
-         [".",".",".","3","4",".",".",".","."],
-         [".",".",".",".",".","3",".",".","."],
-         [".",".",".",".",".","5","2",".","."]]
+#grid = [ [".",".",".",".",".",".","5",".","."],
+#         [".",".",".",".",".",".",".",".","."],
+#         [".",".",".",".",".",".",".",".","."],
+#         ["9","3",".",".","2",".","4",".","."],
+#         [".",".","7",".",".",".","3",".","."],
+#         [".",".",".",".",".",".",".",".","."],
+#         [".",".",".","3","4",".",".",".","."],
+#         [".",".",".",".",".","3",".",".","."],
+#         [".",".",".",".",".","5","2",".","."]]
 
 
-print(sudoku2(grid))
-
-#a = [[1, 2, 3],
-#     [4, 5, 6],
-#     [7, 8, 9]]
-
-#print(rotateImage(a))
+#print(sudoku2(grid))
 
 
-#s = "abacabad"
+def isCryptSolution(crypt, solution):
+    charValues = dict(solution)
+    valuesToSum = []
+    for i in range(len(crypt)):
+        valueToAppend = ''
+        for j in range(len(crypt[i])):
+            valueToAppend = valueToAppend + charValues[crypt[i][j]]
+        valuesToSum.append(valueToAppend)
 
-#print(firstNotRepeatingCharacter(s))
+    if int(valuesToSum[0]) + int(valuesToSum[1]) != int(valuesToSum[2]):
+        return False
+    else:
+        if len(valuesToSum[0]) > 1 and valuesToSum[0][0] == '0':
+            return False
+        if len(valuesToSum[0]) > 1 and valuesToSum[1][0]=='0':
+            return False
+        if len(valuesToSum[0]) > 1 and valuesToSum[2][0]=='0':
+            return False
+        else:
+            return True
 
-#a = [2, 1, 3, 5, 3, 2]
+crypt = ["TEN",
+ "TWO",
+ "ONE"]
 
-#print(opt_first_duplicate(a))
+solution = [["O","1"],
+ ["T","0"],
+ ["W","9"],
+ ["E","5"],
+ ["N","4"]]
+
+isCryptSolution(crypt, solution)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
