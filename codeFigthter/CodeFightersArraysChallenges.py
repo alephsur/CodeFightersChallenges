@@ -124,6 +124,37 @@ isCryptSolution(crypt, solution)
 
 
 
+def removeKFromList(l, k):
+    list = ListNode(0)
+    temp = list
+    while l != None:
+        if l.value != k:
+            temp.next = l
+            temp = temp.next
+        l = l.next
+    temp.next = None
+    return list.next
+
+class ListNode(object):
+    def __init__(self, x):
+        self.value = x
+        self.next = None
+
+list = ListNode(3)
+list.next = ListNode(1)
+second = list.next
+second.next = ListNode(2)
+third = second.next
+third.next = ListNode(3)
+fourth = third.next
+fourth.next = ListNode(4)
+fifth = fourth.next
+fifth.next = ListNode(5)
+
+k = 3
+
+removeKFromList(list,k)
+
 
 
 
