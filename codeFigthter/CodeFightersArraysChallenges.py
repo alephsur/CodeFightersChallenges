@@ -135,6 +135,18 @@ def removeKFromList(l, k):
     temp.next = None
     return list.next
 
+def isListPalindrome(l):
+    list = ListNode(0)
+    listaNumber = []
+    while l != None:
+        listaNumber.append(l.value)
+        l = l.next
+    ## listaNumber == listaNumber[::-1]
+    for i in range(0,len(listaNumber)/2):
+        if listaNumber[i] != listaNumber[-i-1]:
+            return False
+    return True
+
 class ListNode(object):
     def __init__(self, x):
         self.value = x
