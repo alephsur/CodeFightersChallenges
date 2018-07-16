@@ -171,7 +171,49 @@ removeKFromList(list,k)
 
 
 
+def addTwoHugeNumbers(a, b):
+    number1 = []
+    number2 = []
+    numberAdd = []
+    while a != None:
+        number1.append(str(a.value).rjust(4, "0"))
+        a = a.next
+    while b != None:
+        number2.append(str(b.value).rjust(4, "0"))
+        b = b.next
 
+    number1 = "".join(number1)
+    number2 = "".join(number2)
+    total = int(number1) + int(number2)
+    if len(str(total))%4 != 0:
+        total = str(total).rjust(len(str(total)) + 4 - (len(str(total))%4),'0')
+    else:
+        total = str(total)
+    numero = ""
+    for i in range(0, len(total)+1):
+        if i % 4 == 0 and i > 0:
+            numberAdd.append(int(numero[::-1]))
+            if i < len(total):
+                numero = ""
+                numero = numero + total[-i - 1]
+        else:
+            numero = numero + total[-i-1]
+
+    return numberAdd[::-1]
+
+
+
+list = ListNode(9876)
+list.next = ListNode(5432)
+second = list.next
+second.next = ListNode(1999)
+
+third = ListNode(1)
+third.next = ListNode(8001)
+#fourth = third.next
+#fourth.next = ListNode(100)
+
+print (addTwoHugeNumbers(list,third))
 
 
 
