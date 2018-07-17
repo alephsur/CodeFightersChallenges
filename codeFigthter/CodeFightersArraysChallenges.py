@@ -216,9 +216,32 @@ third.next = ListNode(8001)
 print (addTwoHugeNumbers(list,third))
 
 
-
-
-
+def mergeTwoLinkedLists(l1, l2):
+    l3 = ListNode(0)
+    temp = l3
+    while l1 != None or l2 != None:
+        if l1 == None:
+            temp.next = l2
+            temp = temp.next
+            l2 = l2.next
+            continue
+        if l2 == None:
+            temp.next = l1
+            temp = temp.next
+            l1 = l1.next
+            continue
+        if l1.value <= l2.value:
+            temp.next = l1
+            temp = temp.next
+            l1 = l1.next
+            continue
+        if l1.value > l2.value:
+            temp.next = l2
+            temp = temp.next
+            l2 = l2.next
+            continue
+        temp.next = ListNode(0)
+    return l3.next
 
 
 
