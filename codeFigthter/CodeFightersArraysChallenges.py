@@ -246,7 +246,58 @@ def mergeTwoLinkedLists(l1, l2):
 
 
 
+def makeArrayConsecutive2(statues):
+    numberOfStatus = 0
+    statues = sorted(statues)
+    for i in range(0, len(statues) - 1):
+        if (statues[i + 1] - statues[i]) > 1:
+            numberOfStatus = numberOfStatus + (statues[i + 1] - (tatues[i]+1))
 
+    return numberOfStatus
+
+statues = [6, 2, 3, 8]
+
+#makeArrayConsecutive2(statues)
+
+
+
+def almostIncreasingSequence(sequence):
+    changes = 0
+    maxValue = -100000000
+    secondMax = -100000000
+    for i in sequence:
+        if i > maxValue:
+            secondMax = maxValue
+            maxValue = i
+        elif i > secondMax:
+            maxValue = i
+            changes = changes + 1
+        else:
+            changes = changes + 1
+
+    return changes < 2
+
+var =  [1, 2, 1, 2]
+
+
+#print(almostIncreasingSequence(var))
+
+def matrixElementsSum(matrix):
+    for i in range(0,len(matrix)):
+        for j in range(0,len(matrix[0])):
+            if matrix[i][j] == 0:
+                for k in range(i, len(matrix)):
+                    matrix[k][j] = 0
+    total = 0
+    for i in matrix:
+        total = total + sum(i)
+    return total
+
+matrix = [[0, 1, 1, 2],
+          [0, 5, 0, 0],
+          [2, 0, 3, 3]]
+
+print(matrixElementsSum(matrix))
 
 
 
