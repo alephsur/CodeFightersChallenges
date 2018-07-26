@@ -300,5 +300,91 @@ matrix = [[0, 1, 1, 2],
 print(matrixElementsSum(matrix))
 
 
+def allLongestStrings(inputArray):
+    #return [x for x in inputArray if len(x) == len(max(inputArray, key=len))]
+    long = 0
+    newArray = []
+    for i in inputArray:
+        if len(i) > long:
+            newArray = []
+            newArray.append(i)
+            long = len(i)
+        elif len(i) == long:
+            newArray.append(i)
+    return newArray
+
+
+inputArray = ["aba", "aa", "ad", "vcd", "aba"]
+
+
+#allLongestStrings(inputArray)
+
+
+def commonCharacterCount(s1, s2):
+    countChars = 0
+    for i in s1:
+        if i in s2:
+            countChars = countChars + 1
+            s2=s2.replace(i,"",1)
+    return countChars
+
+s1 = "aabcc"
+s2 = "adcaa"
+
+#commonCharacterCount(s1,s2)
+
+
+def isLucky(n):
+    #s = str(n)
+    #return sum(int(firsthalf) for firsthalf in s[:len(s) // 2]) == sum(int(secondhalf) for secondhalf in s[len(s) // 2:])
+    result1 = 0
+    result2 = 0
+    number = str(n)
+    for i in range(0,len(number)):
+        if i < len(number )/2:
+            result1 = result1 + int(number[i])
+        else:
+            result2 = result2 + int(number[i])
+    return  result1 == result2
+
+#isLucky(1230);
+
+
+
+
+def sortByHeight(a):
+    sortList = []
+    for i in a:
+        if i != -1:
+            sortList.append(i)
+    sortList = sorted(sortList);
+    sortIndex = 0
+    for i in range(0,len(a)):
+        if a[i] != -1:
+            a[i] = sortList[sortIndex]
+            sortIndex = sortIndex + 1
+    return a
+
+
+
+
+def reverseParentheses(s):
+    openParantesis = []
+    long = len(s)
+    d = 0
+    for i in range(0,long):
+        if s[i-d] == "(":
+            openParantesis.append(i-d)
+        if s[i-d] == ")":
+            s = s[:openParantesis[-1]] + s[openParantesis[-1]+1:i - d][::-1] + s[i-d + 1:]
+            openParantesis.pop()
+            d = d + 2
+
+    return s
+
+s = "abc(cba)ab(bac)c"
+#s =  "The ((quick (brown) (fox) jumps over the lazy) dog)"
+reverseParentheses(s)
+
 
 
