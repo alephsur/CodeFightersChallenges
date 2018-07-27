@@ -386,5 +386,33 @@ s = "abc(cba)ab(bac)c"
 #s =  "The ((quick (brown) (fox) jumps over the lazy) dog)"
 reverseParentheses(s)
 
+def reverseNodesInKGroups(l, k):
+    listOriginal = []
+
+    while l != None:
+        listOriginal.append(l.value)
+        l = l.next
+
+    listReversed = []
+    for i in range(0, len(listOriginal), k):
+        j = i + k
+        sublist = listOriginal[i:j]
+        if len(sublist) < k:
+            listReversed += sublist[:]
+        else:
+            listReversed += sublist[::-1]
+
+    return listReversed
+
+list = ListNode(1)
+list.next = ListNode(2)
+second = list.next
+second.next = ListNode(3)
+third = second.next
+third.next = ListNode(4)
+fourth = third.next
+fourth.next = ListNode(5)
+
+reverseNodesInKGroups(list,1)
 
 
