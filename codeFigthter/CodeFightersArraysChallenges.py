@@ -416,3 +416,31 @@ fourth.next = ListNode(5)
 reverseNodesInKGroups(list,1)
 
 
+def alternatingSums(a):
+    #return [sum(a[::2]), sum(a[1::2])]
+    sum1 = 0
+    sum2 = 0
+    for i, n in a:
+        if i % 2 == 0:
+            sum1 = sum1 + n
+        else:
+            sum2 = sum2 + n
+    return [sum1,sum2]
+
+a = [50, 60, 60, 45, 70]
+
+#alternatingSums(a)
+
+
+def addBorder(picture):
+    #l=len(picture[0])+2
+    #return ["*"*l]+[x.center(l,"*") for x in picture]+["*"*l]
+    resultMatrix = []
+    long = len(picture[0]) + 2
+
+    resultMatrix.append("*"*long)
+    for i in range(len(picture)):
+        resultMatrix.append("*" + picture[i] + "*")
+
+    resultMatrix.append("*" * long)
+    return resultMatrix
