@@ -1,3 +1,5 @@
+
+
 def opt_first_duplicate(arr):
     unique_nb = set()
     for nb in arr:
@@ -120,7 +122,7 @@ solution = [["O","1"],
  ["E","5"],
  ["N","4"]]
 
-isCryptSolution(crypt, solution)
+#isCryptSolution(crypt, solution)
 
 
 
@@ -165,7 +167,7 @@ fifth.next = ListNode(5)
 
 k = 3
 
-removeKFromList(list,k)
+#removeKFromList(list,k)
 
 
 
@@ -213,7 +215,7 @@ third.next = ListNode(8001)
 #fourth = third.next
 #fourth.next = ListNode(100)
 
-print (addTwoHugeNumbers(list,third))
+#print (addTwoHugeNumbers(list,third))
 
 
 def mergeTwoLinkedLists(l1, l2):
@@ -297,7 +299,7 @@ matrix = [[0, 1, 1, 2],
           [0, 5, 0, 0],
           [2, 0, 3, 3]]
 
-print(matrixElementsSum(matrix))
+#print(matrixElementsSum(matrix))
 
 
 def allLongestStrings(inputArray):
@@ -384,7 +386,7 @@ def reverseParentheses(s):
 
 s = "abc(cba)ab(bac)c"
 #s =  "The ((quick (brown) (fox) jumps over the lazy) dog)"
-reverseParentheses(s)
+#reverseParentheses(s)
 
 def reverseNodesInKGroups(l, k):
     listOriginal = []
@@ -413,7 +415,7 @@ third.next = ListNode(4)
 fourth = third.next
 fourth.next = ListNode(5)
 
-reverseNodesInKGroups(list,1)
+#reverseNodesInKGroups(list,1)
 
 
 def alternatingSums(a):
@@ -444,3 +446,117 @@ def addBorder(picture):
 
     resultMatrix.append("*" * long)
     return resultMatrix
+
+
+def areSimilar(a, b):
+    countChanges = 0
+
+    for i in range(0,len(a)):
+        if a[i] != b[i]:
+            if countChanges == 1:
+                return False
+            sw = 0
+            if (i+1) < len(a):
+                for j in range(i + 1,len(a)):
+                    if a[i] == b[j]:
+                        sw = 1
+                        aux = b[j]
+                        b[j] = b[i]
+                        b[i] = aux
+                    if sw == 1 and countChanges == 0:
+                        countChanges = 1
+                        break
+                if countChanges == 0:
+                    return False
+                if sw == 0:
+                    return False
+            else:
+                return False
+    return True
+
+
+a = [832, 998, 148, 570, 533, 561, 894, 147, 455, 279]
+b = [832, 570, 148, 998, 532, 561, 533, 147, 894, 279]
+
+
+##print(areSimilar(a,b))
+
+def arrayChange(inputArray):
+    countChanges = 0
+    for i in range(len(inputArray)):
+        if i < len(inputArray)-1:
+            if inputArray[i] < inputArray[i+1]:
+                continue
+            else:
+                countChanges = countChanges + (inputArray[i] - inputArray[i+1])+1
+                if inputArray[i] == inputArray[i+1]:
+                    inputArray[i + 1] = inputArray[i+1] +1
+                else:
+                    inputArray[i+1] = inputArray[i+1] + (inputArray[i] - inputArray[i+1])+1
+        else:
+            return countChanges
+    return countChanges
+
+
+
+#inputArray = [-1000, 0, -2, 0]
+#print(arrayChange(inputArray))
+
+
+
+def palindromeRearranging(inputString):
+    inputString = sorted(inputString)
+    countNotDuplicateChar = 0
+    while(len(inputString) > 0):
+        if len(inputString) >= 2:
+            if inputString[0] == inputString[1]:
+                inputString.remove(inputString[0])
+                inputString.remove(inputString[0])
+                continue
+            else:
+                if countNotDuplicateChar == 1:
+                    return False
+                countNotDuplicateChar = countNotDuplicateChar + 1
+                inputString.remove(inputString[0])
+        else:
+            if countNotDuplicateChar == 0:
+                return True
+            else:
+                return False
+    return True
+
+
+
+#inputString =  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabc"
+#print(palindromeRearranging(inputString))
+
+
+
+
+import re
+
+def isIPv4Address(inputString):
+    pat = re.compile("^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$")
+    test = pat.match(inputString)
+    if test:
+        return True
+    else:
+        return False
+
+
+
+print (isIPv4Address("192.168.142.122"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
